@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - parser
+    networks:
+      - wb_network
+
+  parser:
+    build:
+      context: .
+      dockerfile: Dockerfile.parser
+    networks:
+      - wb_network
+
+networks:
+  wb_network:
+    driver: bridge

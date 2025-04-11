@@ -1,0 +1,7 @@
+FROM golang:1.23
+
+WORKDIR /app
+COPY parser/ .
+RUN go mod tidy
+RUN go build -o wb_parser main.go
+CMD ["./wb_parser"]
